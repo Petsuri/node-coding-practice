@@ -1,15 +1,19 @@
 const assert = require("chai").assert;
-const structurize = require('./index').structurize;
+const structurize = require("./index").structurize;
 
-describe('test1/index', () => {
+describe("test1/index", () => {
   [
     {
       name: "Michael Daniel Jäger",
-      expected: { first: "Michael", middle: ["Daniel"], last: "Jäger" }
+      expected: { first: "Michael", middle: ["Daniel"], last: "Jäger" },
     },
     {
       name: "LINUS HARALD christer WAHLGREN",
-      expected: { first: "Linus", middle: ["Harald", "Christer"], last: "Wahlgren" },
+      expected: {
+        first: "Linus",
+        middle: ["Harald", "Christer"],
+        last: "Wahlgren",
+      },
     },
     {
       name: "Pippilotta Viktualia Rullgardina Krusmynta Efraimsdotter LÅNGSTRUMP",
@@ -38,13 +42,12 @@ describe('test1/index', () => {
     {
       name: null,
       expected: { first: null, middle: [], last: null },
-    }
+    },
   ].forEach(({ name, expected }) => {
     it(`should structure given name (${name}) correctly`, () => {
-
       const actual = structurize(name);
 
       assert.deepEqual(actual, expected);
-    })
+    });
   });
 });

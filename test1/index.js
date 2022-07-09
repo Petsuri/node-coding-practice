@@ -1,30 +1,26 @@
-
-
 exports.structurize = (name) => {
-  
   const initialNames = name ?? "";
-  const listOfNames = initialNames.split(" ")
+  const listOfNames = initialNames
+    .split(" ")
     .filter(removeEmptyEntries)
-    .map(firstLetterCapitalized); 
+    .map(firstLetterCapitalized);
   return {
     first: getFirstName(listOfNames),
     middle: getMiddleNames(listOfNames),
     last: getLastName(listOfNames),
   };
-
-}
+};
 
 function removeEmptyEntries(name) {
   return name && name.length !== 0;
 }
 
 function firstLetterCapitalized(name) {
-  
   if (name.length === 0) {
     return name;
   }
 
-  return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase(); 
+  return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 }
 
 function getFirstName(names) {
@@ -38,7 +34,7 @@ function getFirstName(names) {
 
 function getMiddleNames(names) {
   if (containsMiddleNames(names)) {
-    return names.slice(1, lastNameIndex(names))
+    return names.slice(1, lastNameIndex(names));
   }
 
   return [];
@@ -67,5 +63,5 @@ function containsLastName(names) {
 }
 
 function lastNameIndex(names) {
-  return names.length - 1;;
+  return names.length - 1;
 }
